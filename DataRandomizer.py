@@ -7,7 +7,7 @@ class DataGenerator(object):
     position for an event, random price for a ticket, etc.
     """
 
-    max_num_of_tickers = 10  # this is the maximum number of tickets allowed for a single event
+    max_num_of_tickers = 15  # this is the maximum number of tickets allowed for a single event
 
     max_ticket_price = 100.00  # this is the maximum price allowed for a single ticket
 
