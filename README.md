@@ -5,7 +5,11 @@
 
 * Main method located in EventsSimulation.py file
 
-* To run it, type the following command from terminal:
+* Download all the source code and make sure all files are in the same folder
+
+* In a terminal window, navigate to the root folder, where all the source code files are located
+
+* To run the simulation, type the following command from the terminal window:
 ```
 python EventsSimulation.py
 ```
