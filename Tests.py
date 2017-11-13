@@ -1,5 +1,5 @@
 import unittest
-from CustomErrors import InvalidPriceError, InvalidPositionError
+from CustomErrors import InvalidPriceError, InvalidPositionError, DuplicateIdentifierError
 from DataModel import GridWorld, Event
 
 
@@ -71,8 +71,12 @@ class SimulationTests(unittest.TestCase):
             self.world.get_nearest_positions(self.world.grid_size*2, 0, 2)
 
         self.world.register_event(Event(2, []), 0, 2)
+        with self.assertRaises(DuplicateIdentifierError):
+            self.world.register_event(Event(2, [1]), 5, 6)
         self.world.register_event(Event(3, [1]), 2, 1)
         self.world.register_event(Event(4, [4, 5]), -2, -1)
+        with self.assertRaises(DuplicateIdentifierError):
+            self.world.register_event(Event(3, [1]), 5, 6)
         self.assertEqual(self.world.get_nearest_positions(0, 0, 0), [],
                          "Nearest positions should be an empty list if 0 is given as argument for the number of events")
 

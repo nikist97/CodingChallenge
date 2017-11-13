@@ -24,3 +24,17 @@ class InvalidPositionError(ValueError):
         """
 
         super(InvalidPositionError, self).__init__(msg)
+
+
+class DuplicateIdentifierError(KeyError):
+    """
+    a custom type of error raised when there is a duplicate identifier for en event, e.g when registering a new event
+    """
+
+    def __init__(self, msg):
+        """
+        the constructor for the error calls the parent's (KeyError) constructor
+        :param msg: the msg of the error
+        """
+
+        super(DuplicateIdentifierError, self).__init__(msg)

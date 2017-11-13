@@ -1,5 +1,5 @@
 from DataRandomizer import DataGenerator
-from CustomErrors import InvalidPriceError, InvalidPositionError
+from CustomErrors import InvalidPriceError, InvalidPositionError, DuplicateIdentifierError
 from collections import deque
 from math import log
 
@@ -83,6 +83,8 @@ class GridWorld(object):
             otherwise, default value is True
         """
 
+        self.unique_identifiers = set()  # a set is used to ensure the uniqueness of identifiers for events
+
         self.grid = []
         for row in range(self.grid_size*2 + 1):
             self.grid.append([None]*(self.grid_size*2 + 1))
@@ -115,6 +117,7 @@ class GridWorld(object):
         :param j: the y coordinate of the event
         :raises TypeError: if the event argument is not of type Event
         :raises InvalidPositionError: if the coordinates for the event are out of bounds
+        :raises DuplicateIdentifierError: if the event's identifier is already in use
         """
 
         if type(event) != Event:
@@ -123,7 +126,11 @@ class GridWorld(object):
         if not ((-1*self.grid_size) <= i <= self.grid_size and (-1*self.grid_size) <= j <= self.grid_size):
             raise InvalidPositionError("Out of bounds coordinates when registering an event: {0}, {1}".format(i, j))
 
+        if event.identifier in self.unique_identifiers:
+            raise DuplicateIdentifierError("Identifier {0} is already in use".format(event.identifier))
+
         self.grid[j + self.grid_size][i + self.grid_size] = event
+        self.unique_identifiers.add(event.identifier)
 
     def get_nearest_positions(self, x, y, num_nearest_events):
         """
