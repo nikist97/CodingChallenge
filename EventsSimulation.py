@@ -10,10 +10,15 @@ def main():
     world = GridWorld(generate=True)  # creates a grid world with randomly generated data
 
     while True:
-        try:
-            x, y = map(int, input("Please Input Coordinates:\n\n").split(","))
-        except:
+        input_pos = input("Please Input Coordinates:\n\n")
+        if input_pos == "q" or input_pos == "quit":
             break
+
+        try:
+            x, y = map(int, input_pos.split(","))
+        except:
+            print("Invalid format of the input position: positions should be in format: x, y")
+            continue
 
         try:
             world.get_nearest_events(x, y)

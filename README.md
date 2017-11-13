@@ -22,7 +22,9 @@ x, y
 
 * If an out of bounds position is given (e.g. 5, 15) you will be prompted for a new position
 
-* To stop the simulation type anything that is not a valid position, e.g. quit
+* If an invalid position is given (e.g. "4", "3") you will be prompted for a new position
+
+* To stop the simulation type: q or quit
 
 ### Assumptions
 * The different tickets in an event represent different types of tickets for the given event
