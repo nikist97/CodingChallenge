@@ -35,12 +35,12 @@ x, y
 * The program should output 'N/A' for the minimum ticket price of an event with 0 ticket types
 
 ### Answers to questions in the specification
-1) Support for multiple events at the same location - since each event has a unique identifier, I can support multiple 
+1) **Support for multiple events at the same location** - since each event has a unique identifier, I can support multiple 
 events at a single location by having a map (dictionary in python) at the given location, which contains all the events
 at that location and links the unique identifier of a given event to the event object itself. Thus, when exploring a 
 given location, I would have to iterate through the map of events at the given location.
 
-2) Working with much larger world size - to handle this scenario, I could divide the world into regions of some size,
+2) **Working with much larger world size** - to handle this scenario, I could divide the world into regions of some size,
 where at each location of the grid I will have a given Region object and, thus, significantly decrease the world size. 
 Each Region object will contain a number of events which as explained in question 1) could suitably be stored at a map 
 linking event IDs to the event objects. This, however, will require one more change when searching through the grid 
