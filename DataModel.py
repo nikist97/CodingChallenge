@@ -180,15 +180,20 @@ class GridWorld(object):
         :param x: the input x coordinate
         :param y: the input y coordinate
         :param num_nearest_events: optional argument, the number of nearest events to return, default value is 5
+        :return: a list of the nearest event objects
         """
 
         nearest_positions = self.get_nearest_positions(x, y, num_nearest_events)
+        nearest_events = []
 
         print("\nClosest Events to ({0},{1}):\n".format(x, y))
         for position in nearest_positions:
             event = self.grid[position[1] + self.grid_size][position[0] + self.grid_size]
+            nearest_events.append(event)
             print("Event {0} - {1}, Distance {2}\n".format(event.get_id(), event.get_minimum_ticket_price(),
                                                            self.get_manhattan_distance(x, y, position[0], position[1])))
+
+        return nearest_events
 
     def pretty_print_world(self):
         """

@@ -2,11 +2,23 @@
 
 ### Compilation and execution
 * Language used - Python v3.6
+
 * Main method located in EventsSimulation.py file
+
 * To run it, type the following command from terminal:
 ```
 python EventsSimulation.py
 ```
+
+* While the simulation is running, you will constantly be prompted to type a position in the format given below and
+ the nearest 5 events with their respective minimum ticket price will be printed
+```
+x, y
+```
+
+* If an out of bounds position is given (e.g. 5, 15) you will be prompted for a new position
+
+* To stop the simulation type anything that is not a valid position, e.g. quit
 
 ### Assumptions
 * The different tickets in an event represent different types of tickets for the given event
